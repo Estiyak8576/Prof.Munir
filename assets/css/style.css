@@ -1229,6 +1229,8 @@ footer {
 .v_gap p {
     position: relative;
     animation: moveright 25s linear infinite;
+    white-space: nowrap;
+
 }
 .v_gap i {
     color: red;
@@ -2043,6 +2045,9 @@ footer {
 @media (max-width: 768px){
     .v_video_items{
         width: 100%;
+    }
+    .v_gap p {
+        font-size: 25px;
     }
 }
 /* appointment */
