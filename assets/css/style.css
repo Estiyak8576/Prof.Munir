@@ -1667,10 +1667,11 @@ footer {
         padding: 5px 15px;
     }
     .content {
-    top: 55%;
+    top: 52%;
     left: 50%;
     width: 100%;
     text-align: center;
+    line-height: 1.5;
     }
 }
 @keyframes slideIn {
@@ -2202,7 +2203,7 @@ footer {
 @media (max-width: 768px) {
     .gallery_content .gall_box {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 14px;
     }
     .gall_box a {
         width: 100%;
