@@ -450,6 +450,7 @@ body {
 .container_2 {
     position: relative;
     margin: 0 auto 60px auto; 
+    overflow: hidden;
     width: 90%;
     max-width: 1200px;
     height: 600px;
@@ -459,12 +460,12 @@ body {
                 1px 1px 40px #0053b8f7;
 }
 .container_2 .slide .item {
-    width: 200px;
-    height: 300px;
+    width: 100px;
+    height: 200px;
     position: absolute;
-    top: 50%;
     transform: translateY(-50%);
-    border-radius: 20px;
+    bottom: -90px;
+    border-radius: 10px;
     box-shadow: 0.5px 0.5px 40px #0053b8f7;
     background-position: 50% 50%;
     background-size: cover;
@@ -479,6 +480,7 @@ body {
     position: relative;
     height: 100%;
     width: 100%;
+    background-size: cover;
 }
 .sub_2 {
     opacity: 0;
@@ -516,13 +518,13 @@ body {
         opacity: 1;
 }
 .slide .item:nth-child(3){
-    left: calc(50% + 20px);
+    right: 230px;
 }
 .slide .item:nth-child(4){
-    left: calc(50% + 240px);
+    right: 120px;
 }
 .slide .item:nth-child(5){
-    left: calc(50% + 460px);
+    right: 10px;
 }
 .container_2.gallery-animate .slide .item:nth-child(3),
 .container_2.gallery-animate .slide .item:nth-child(4),
@@ -1791,9 +1793,9 @@ footer {
         top: 50%;
         transform: translate(-50%, -50%) !important;
     }
-    /* .container_2 .slide .item {
+    .container_2 .slide .item {
         box-shadow: none;
-    } */
+    }
     .item .content_1{
         left: 0;
         width: 200px;
@@ -1821,6 +1823,7 @@ footer {
         opacity: 0;
         pointer-events: none;
         transform: translate(-50%, -50%) scale(0);
+        display: none;
     }
     .slide .item:nth-child(n + 6){
     display: none;
