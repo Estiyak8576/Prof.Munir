@@ -455,6 +455,7 @@ body {
     max-width: 1200px;
     height: 600px;
     background: #5F9598;
+    background-size: cover;
     border-radius: 20px;
     box-shadow: 1px 1px 20px #012290f7,
                 1px 1px 40px #0053b8f7;
@@ -1792,8 +1793,6 @@ footer {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%) !important;
-    }
-    .container_2 .slide .item {
         box-shadow: none;
     }
     .item .content_1{
