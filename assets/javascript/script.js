@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof Typed === "undefined") return;
 
         const typedText = {
-            english: ["Ophthalmologist", "Glaucoma Specialist", "Phaco Surgeon"],
+            english: ["an Ophthalmologist", "a Glaucoma Specialist", "a Phaco Surgeon"],
             bangla: ["চক্ষু বিশেষজ্ঞ", "গ্লুকোমা বিশেষজ্ঞ", "ফ্যাকো সার্জন"],
             hindi: ["नेत्र रोग विशेषज्ञ", "ग्लूकोमा विशेषज्ञ", "फैको सर्जन"],
             urdu: ["ماہرِ امراضِ چشم", "گلوکوما اسپیشلسٹ", "فیکو سرجن"]
