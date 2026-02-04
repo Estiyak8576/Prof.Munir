@@ -1765,8 +1765,8 @@ footer {
     position: absolute;
     width: 90%;
     height: 480px;
-    /* left: 50px;
-    top: 10px; */
+    left: 0px;
+    top: 0px;
     backface-visibility: hidden;
     border-radius: 10px;
     z-index: 1;
