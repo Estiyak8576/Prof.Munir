@@ -154,7 +154,7 @@ body {
     font-weight: 700;
 }
 .content h3 .text {
-    color: #f00909;
+    color: #fff;
 }
 .dropdown {
     height: 20px;
@@ -170,7 +170,7 @@ body {
     margin-bottom: 50px;
 }
 .original{
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 20px;
     margin: 8px;
@@ -179,7 +179,7 @@ body {
 .togglebutton{
     display: flex;
     align-self: flex-end;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 500;
     color: #3983BA;
     background-color: #ffffff;
@@ -241,7 +241,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 .about_img {
     display: flex;
@@ -257,10 +257,37 @@ body {
 }
 .about_img .box {
     position: relative;
+    width: 100%;
+    max-width: 550px;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+.about_img .box .front{
+    position: absolute;
+    width: 500px;
+    height: 333px;
+    top: 100px;
+    left: 25px;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    z-index: 2;
+    box-shadow: 1px 1px 20px#012290f7,
+                1px 1px 40px #0053b8f7;
+}
+.about_img .box .back{
+    position: absolute;
     width: 400px;
     height: 480px;
-    /* box-shadow: 1px 1px 20px#012290f7,
-                1px 1px 40px #0053b8f7; */
+    left: 50px;
+    top: 10px;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    z-index: 1;
+    box-shadow: 1px 1px 20px#012290f7,
+                1px 1px 40px #0053b8f7;
 }
 .about_img .front,
 .about_img .back {
@@ -1636,7 +1663,7 @@ footer {
         margin: 20px auto;
     }
     .original{
-        font-size: 13px;
+        font-size: 16px;
         line-height: 18px;
         padding: 20px;
     }
@@ -1656,14 +1683,14 @@ footer {
         margin-bottom: 10px;
     }
     .content a{
-        font-size: 14px;
+        font-size: 18px;
         padding: 8px 18px;
     }
     .card{
         box-shadow: 8px 10px 20px rgba(0, 0, 0, 0.3);
     }
     .original{
-        font-size: 12px;
+        font-size: 16px;
         line-height: 16px;
     }
     #togglebutton{
@@ -1703,31 +1730,83 @@ footer {
         padding: 0px;
         text-align: center;
     }
+
     .about_img {
         order: -1;
-    }
-    .about_img .box{
-        padding: 0;
-        margin: 0;
-        max-width: 250px;
+        flex: unset;
         justify-content: center;
+        align-items: center;
+        perspective: 1000px;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .about_img .box {
+        position: relative;
+        width: 90%;
+        height: atuo;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .about_img .box .front{
+    position: absolute;
+    width: 340px;
+    height: 226px;
+    /* top: 100px;
+    left: 25px; */
+    backface-visibility: hidden;
+    border-radius: 10px;
+    z-index: 2;
+    box-shadow: none;
+}
+.about_img .box .back{
+    position: absolute;
+    width: 90%;
+    height: 480px;
+    /* left: 50px;
+    top: 10px; */
+    backface-visibility: hidden;
+    border-radius: 10px;
+    z-index: 1;
+    box-shadow: none;
+}
+    .about_img .front,
+    .about_img .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 1s ease;
     }
     .about_img img {
-        max-width: 100%;
-        padding-bottom: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
+
     .about_text h2 {
         font-size: 36px;
     }
+
     .about_text h4 {
         font-size: 24px;
     }
+
     .about_text p {
         font-size: 18px;
         padding: 10px;
         text-align: justify;
     }
 }
+
+
 /* services */
 @media (max-width: 992px){
     .services_list div{
@@ -1964,7 +2043,6 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-
     .container_4 iframe {
         height: 250px;
         width: 250px;
