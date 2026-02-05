@@ -139,10 +139,11 @@ body {
     opacity: 0;
     transform: translate(-50%, -50%);
     animation: slideIn 2s ease-in forwards; 
+    color: #fff;
 }
 .h1{
     margin-bottom: 10px;
-    text-shadow: 4px 4px rgba(255, 255, 255, .4);
+    text-shadow: 4px 4px #061E29;
     font-size: 50px;
     text-transform: uppercase;
     white-space: nowrap;
@@ -151,9 +152,12 @@ body {
     justify-content: start;
     font-size: 32px;
     font-weight: 700;
+    text-shadow: 4px 4px #061E29;
 }
 .content h3 .text {
-    color: #fff;
+    color: #000;
+    text-shadow: 2px 2px #fff;
+
 }
 .dropdown {
     height: 20px;
