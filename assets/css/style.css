@@ -1578,6 +1578,35 @@ footer {
 .gallery_content .gall_box .dream:hover img {
     transform: scale(1.05);
 }
+#scroll_button {
+    background-color: #5F9598;
+    box-shadow: 1px 1px 20px#012290f7,
+                1px 1px 40px #0053b8f7;
+    width: 50px;
+    height: 50px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+#scroll_button i {
+    font-size: 32px;
+    color: white;
+}
+#scroll_button:hover {
+    cursor: pointer;
+    background-color: #333;
+}
+#scroll_button.show {
+    opacity: 1;
+    visibility: visible;
+}
 
 
 

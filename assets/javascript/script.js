@@ -350,7 +350,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 })();
+(function () {
+    const scrollBtn = document.getElementById("scroll_button");
 
+    if (!scrollBtn) return;
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 200) {
+            scrollBtn.classList.add("show");
+        } else {
+            scrollBtn.classList.remove("show");
+        }
+    });
+
+    scrollBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+})();
 /* =====================================================
    LANGUAGE SWITCHER
    ===================================================== */
