@@ -17,7 +17,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     })();
 
+    (() => {
+        const bannar = document.querySelector('.bannar');
+        const dots = document.querySelectorAll('.dot');
+        const images = [
+            '../image/image_1.jpg',
+            '../image/image_2.jpg',
+            '../image/image_3.jpg',
+            '../image/image_4.jpg',
+            '../image/image_5.jpg'
+        ];
 
+        let currentIndex = 0;
+        function showSlide(index) {
+            bannar.style.backgroundImage = `url(${images[index]})`;
+            bannar.style.transition = 'background-image 0.5s ease-in-out'; // মসৃণ ট্রানজিশন
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            currentIndex = index;
+        }
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                showSlide(i);
+            });
+        });
+        setInterval(() => {
+            let nextIndex = (currentIndex + 1) % images.length;
+            showSlide(nextIndex);
+        }, 5000);
+
+        showSlide(0);
+    })();
     /* =====================================================
        READ MORE TOGGLE
     ===================================================== */
@@ -35,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.textContent = isShow ? "Read Less" : "Read More";
         });
     })();
+
 
 
     /* =====================================================
@@ -688,3 +719,134 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdown.selectedIndex = 0;
     }
 });
+// Rating
+(() => {
+const currentUserEmail = "user@example.com"; // যদি লগ ইন না থাকে, null বা '' হবে
+
+// DOM elements
+const reviewList = document.getElementById('reviewList');
+const submitBtn = document.querySelector('.submitbtn button');
+const ratingInputs = document.querySelectorAll('.star_widget input');
+const textarea = document.querySelector('.star_widget textarea');
+
+// LocalStorage key
+const STORAGE_KEY = 'reviews_app';
+
+// Get saved reviews
+function getReviews() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+}
+
+// Save reviews
+function saveReviews(reviews) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+}
+
+// Render reviews
+function renderReviews() {
+    const reviews = getReviews();
+    reviewList.innerHTML = '';
+
+    reviews.forEach((review, index) => {
+        const li = document.createElement('li');
+        li.classList.add('review-item');
+
+        li.innerHTML = `
+            <div class="review-header">
+                <img src="${review.avatar}" alt="Avatar" style="width:30px;height:30px;border-radius:50%;margin-right:5px;">
+                <strong>${review.email}</strong>
+            </div>
+            <div class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+            <div class="review-text">${review.text}</div>
+            <div class="review-actions">
+                <button class="reply-btn">Reply</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+            <div class="reply-box" style="display:none;">
+                <textarea placeholder="Write a reply"></textarea>
+                <button class="reply-submit">Submit</button>
+            </div>
+            <div class="replies">
+                ${review.replies.map(r => `<div class="reply-text">${r}</div>`).join('')}
+            </div>
+        `;
+
+        // Delete review
+        li.querySelector('.delete-btn').addEventListener('click', () => {
+            const allReviews = getReviews();
+            allReviews.splice(index, 1);
+            saveReviews(allReviews);
+            renderReviews();
+        });
+
+        // Reply toggle
+        const replyBox = li.querySelector('.reply-box');
+        li.querySelector('.reply-btn').addEventListener('click', () => {
+            replyBox.style.display = replyBox.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Submit reply
+        li.querySelector('.reply-submit').addEventListener('click', () => {
+            const replyText = replyBox.querySelector('textarea').value.trim();
+            if (!replyText) return alert('Reply cannot be empty!');
+            const allReviews = getReviews();
+            allReviews[index].replies.push(replyText);
+            saveReviews(allReviews);
+            renderReviews();
+        });
+
+        reviewList.appendChild(li);
+    });
+}
+
+// Get selected rating
+function getSelectedRating() {
+    for (let input of ratingInputs) {
+        if (input.checked) return parseInt(input.id.split('_')[1]);
+    }
+    return 0;
+}
+
+// Submit review
+function submitReview() {
+    const rating = getSelectedRating();
+    const text = textarea.value.trim();
+    if (!rating) return alert('Please select a rating');
+    if (!text) return alert('Please write your review');
+
+    // Email
+    let email = currentUserEmail;
+    if (!email) {
+        email = prompt('Enter your email:');
+        if (!email) return alert('Email is required');
+    }
+
+    // Avatar
+    const avatar = `https://ui-avatars.com/api/?name=${email.split('@')[0]}&background=random`;
+
+    const allReviews = getReviews();
+    allReviews.push({ rating, text, email, avatar, replies: [] });
+    saveReviews(allReviews);
+
+    textarea.value = '';
+    ratingInputs.forEach(i => i.checked = false);
+    renderReviews();
+}
+
+// Button click
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    submitReview();
+});
+
+// Enter key press
+textarea.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault(); // line break না দেয়
+        submitReview();
+    }
+});
+
+// Initial render
+renderReviews();
+})();
