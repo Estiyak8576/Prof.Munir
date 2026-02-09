@@ -1660,11 +1660,14 @@ footer {
     justify-content: space-evenly;
     align-items: center;
     padding: 30px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
 }
 .rating {
     width: 400px;
     background-color: #5F9598;
     padding: 20px;
+    flex-shrink: 0;
     border-radius: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
@@ -1751,6 +1754,7 @@ form .submitbtn button:hover {
 .reviews {
     position: relative;
     width: 40vw;
+    flex-shrink: 0;
     background: #5F9598;
     padding: 15px;
     border-radius: 15px;
@@ -1874,7 +1878,7 @@ form .submitbtn button:hover {
 }
 @media (max-width: 992px){
     .section{
-        min-height: 800px;
+        min-height: 850px;
         margin-bottom: 40px;
     }
     .bannar {
@@ -2516,5 +2520,26 @@ form .submitbtn button:hover {
     }
     .gall_box a {
         width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .rating_1 {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+    .rating {
+        width: 300px;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .star_widget label{
+        font-size: 25px;
+    }
+    .reviews {
+        width: 90vw;
     }
 }
