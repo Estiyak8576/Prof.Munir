@@ -10,12 +10,20 @@
 <body>
     <header>
         <div class="navbar_header"> 
-            <a href="index.html" class="logo">Dr. Munir</a>
+            <a href="index.html" class="logo"><img src="assets/image/logo_m.png" alt="prof-iftekhar-md-munir"></a>
             <nav class="navbar">
                 <a href="index.html" data-lang="home">Home <span></span></a>                
                 <a href="about_me.html" data-lang="about">About me <span></span></a>
                 <!-- <a href="services.html" data-lang="service">Services <span></span></a> -->
-                <a href="videogallery.html" data-lang="video">Videos <span></span></a>
+                <div class="nav_dropdown">
+                    <a href="videogallery.html" class="dropbtn">Videos <i class="fa-solid fa-caret-down"></i><span></span>
+                    </a>
+
+                    <div class="dropdown_content">
+                        <a href="videogallery.html">All Videos</a>
+                        <a href="review_videos.html">Review Videos</a>
+                    </div>
+                </div>
                 <a href="gallery.html" data-lang="gallery">Gallery <span></span></a>
                 <a href="contact.html" data-lang="contact">Contact <span></span></a>
             </nav> 
